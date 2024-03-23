@@ -27,25 +27,24 @@ Here is a list of things you may want to try:
 - open `main.go` in your editor and have a look around
 - run `go run .`
 - run `go run main.go`
-- run `go build` then check the directory
-- what kind of file is `hello`? Hint: on unix-like systems you can use the file command: `file hello`
+- run `go build` to compile the `hello` command, check the directory afterward and run your new executable
 - run `go env` to see all the go environment variables
-- run `go help` to see more go sub-commands
+- run `go help` to see more go sub-commands, there are a few so you might want to use a pager
 
 
 ## Task 2 - Hello Tests
 
 Now that we have some basic familiarity with the `go` tool it is time for some tests!
 
-In the `users` directory contains a go package and some tests for the type defined in the package.
+The `users/users.go` file defines a go package and some tests for the type defined in the package can be found in `users/users_test.go`.
 Go provides a [testing package in the standard library](https://pkg.go.dev/testing) and it is integrated with the `go` tool making it a quite comprehensive test framework.
 
 The canonical way of testing go packages is to run `go test` in a directory containing a package, or run `go test ./...` in the root directory of a module to run all the test in the module.
 
-Is there something wrong with the `user` package? Let's find out!
+Is there something wrong with the `users` package? Let's find out!
 
 - from the root directory of this repository try to run `go test ./...`
-- cd into the `user` directory and run `go test`
+- cd into the `users` directory and run `go test`
 - run `go help test`
 - run `go test -json`
 
