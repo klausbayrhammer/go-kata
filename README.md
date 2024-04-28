@@ -1,11 +1,14 @@
 # Go Bootstrap Kata
 
-This is kata to get you taste of Go with some hands on tasks.
+This is kata to get you a taste of Go with some hands on tasks.
 
 If anytime you are stuck you can check the [docs](https://pkg.go.dev/), and specifically the [standard library docs](https://pkg.go.dev/std) since we will try to not add other dependencies.
 And in case you cannot tell from where an identifier comes from it might be a [builtin](https://pkg.go.dev/builtin).
 
 Anytime you have a doubt on a concept, be it syntax or semantic or both, the [Effective Go](https://go.dev/doc/effective_go) document will probably help, keep it handy.
+
+
+There are several tasks for you, none of them is very specific just let the comments in the code guide you and have fun!
 
 ## Task 0 - Getting Ready
 
@@ -34,19 +37,24 @@ Here is a list of things you may want to try:
 - run `go help` to see more go sub-commands, there are a few so you might want to use a pager
 
 
-## Task 2 - Hello Tests
+
+## Task 2 - Hello tests
 
 Now that we have some basic familiarity with the `go` tool it is time for some tests!
 
-The `users/users.go` file defines a go package and some tests for the type defined in the package can be found in `users/users_test.go`.
 Go provides a [testing package in the standard library](https://pkg.go.dev/testing) and it is integrated with the `go` tool making it a quite comprehensive testing framework.
 
 The canonical way of testing go packages is to run `go test` in a directory containing a package, or run `go test ./...` in the root directory of a module to run all the test in the module.
 
-Is there something wrong with the `users` package? Let's find out!
+Is there something wrong with the `address` package in the `task-2` directory? 
+Can you improve the code and write some more test?
+Can you check the test coverage?
+
+Some tips:
 
 - from the root directory of this repository try to run `go test ./...` to test the whole module
-- cd into the `users` directory and run `go test` to test only the `users` package
+- from the root directory of this repository try to run `go test ./task-2` to test only the package in that directory
+- cd into the `task-2` directory and run `go test`
 - run `go help test`
 - run `go test -json`
 
@@ -60,9 +68,71 @@ Test coverage is also included (as are benchmarking and fuzzing) and works out o
 - see the whole cover story at [go.dev/blog/cover](https://go.dev/blog/cover)
 
 
+## Task 3 - Hello Composition
+
+This task will make you familiarize with how Go avoid inheritance in favor of composition. 
+Another interesting feature of Go is the structural sub-typing that interfaces provide, along with the Liskov substitution.
 
 
-## Task 3 - Hello Web
+With your help we want to build an online shop to make Jeff green with envy!
+I this task we are going to use the `Address` from `task-2` and provide our `User`s with a billing and shipping address.
+Also we need our users to be able to login, maybe we can use and interface to delegate the actual logic to different specific implementations.
+ 
+Some tips:
+
+Given a `Count` type:
+
+```go
+type Count struct{
+   Value int 
+}
+
+func(c *Count) Inc(){
+    c.Value +=1
+}
+
+```
+
+We can embed it in another type:
+
+```go 
+type Foo struct {
+    Bar string
+    Count
+}
+```
+
+The embedding type will have the methods of the embedded:
+
+```go
+f := Foo{
+    Bar: "Bar",
+    // Count is created with its zero-value
+}
+
+f.Inc() // now f.Count.Value == 1 
+fmt.Println(f.Value) // we can skip to the inner values of the embedded type
+```
+
+Embedding can be done with Interfaces as well, when we create a type embedding an interface we need to provide a type implementing that interface.
+
+```go
+type Baz struct {
+    Qux string
+    io.Writer // this is an embedded interface
+}
+
+b := Baz{
+    Qux: "Qux",
+    Writer: bytes.NewBuffer(some_bytes), // bytes.Buffer implements io.Writer
+}
+
+```
+
+
+
+
+## Task 4 - Hello Web
 
 In this task we are going to play around with a small web server, the web server is not accomplishing much yet but it will be useful to show some nice Go features.
 
@@ -91,3 +161,8 @@ WIP: see how to cross compile, maybe also the resouce embedding
 
 Beer
 
+
+
+### References 
+
+- [Phil Wadler: Featherweight Go](https://www.youtube.com/watch?v=Dq0WFigax_c)
