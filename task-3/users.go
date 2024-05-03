@@ -7,11 +7,12 @@ import (
 
 // User of the system.
 // The User needs to have both a billing and shipping address, and be able to
-// login
+// login.
 type User struct {
 	Name  string
 	Email string
 	// we need to have a billing and a shipping address, here is the Billing one
+	// you need to add another one
 	Billing address.Address
 
 	// and a Login method would not go amiss, there should be an interface we

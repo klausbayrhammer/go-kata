@@ -1,6 +1,7 @@
 // packages in Go are namespace for all the symbols defined inside the package
 package main
 
+// importing a package
 import "fmt"
 
 // function main() in the main package is the entry point of a Go executable

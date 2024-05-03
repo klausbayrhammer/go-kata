@@ -76,6 +76,7 @@ Another interesting feature of Go is the structural sub-typing that interfaces p
 
 With your help we want to build an online shop to make Jeff green with envy!
 I this task we are going to use the `Address` from `task-2` and provide our `User`s with a billing and shipping address.
+
 Also we need our users to be able to login, maybe we can use and interface to delegate the actual logic to different specific implementations.
  
 Some tips:
@@ -86,6 +87,7 @@ Given a `Count` type:
 type Count struct{
    Value int 
 }
+
 
 func(c *Count) Inc(){
     c.Value +=1
@@ -124,13 +126,10 @@ type Baz struct {
 
 b := Baz{
     Qux: "Qux",
-    Writer: bytes.NewBuffer(some_bytes), // bytes.Buffer implements io.Writer
+    Writer: bytes.NewBuffer([]byte{'H','e','l','l','o'}), // bytes.Buffer implements io.Writer
 }
 
 ```
-
-
-
 
 ## Task 4 - Hello Web
 
@@ -140,26 +139,34 @@ In this task we are going to play around with a small web server, the web server
 - you should know by now how to compile and run  the code ;)
 - have a look at the `better-logs.go` file, can you improve the log middleware as the comments mentioned?
 
-## Task 4 - Hello JSON
-
-WIP: tyny JSON API  maybe just one endpoint /items/{ID} to add an item or list all the items, write some tests for it.
-Goals:
-- use JSON
-- see how to test HTTP endpoints
 
 ## Task 5 - Hello Goroutines
 
-WIP: expand on the JSON API maybe add an enpoint to process the items /items/process/ that accepts a list of items and process them in a goroutine.
-Goals:
+**David Attenborough voice**
+Ah the fabled Goroutines... not a system thread and not a coroutine, more like a flock of concurrent subroutines multiplexed on a pool of system threads...
+
+Go has a concurrency model not based on `async` `await` but based on CSP.
+The [CSP model](https://www.cs.cmu.edu/~crary/819-f09/Hoare78.pdf)(Commicating Sequential Processes) was devised by Tony Hoare ~50 years ago.
+The same [Tony Hoare](https://en.wikipedia.org/wiki/Tony_Hoare) is the one that admitted to the "billion dollar mistake" by introducing `NULL` pointers.
+The irony is not wasted on me for that Go has null pointers...
+
+Back to the Goroutines 
+To use the fa goroutines, select, and channels.
 - use pool of workers
 
 ## Task 6 - Hello GOOS and GOARCH
 
-WIP: see how to cross compile, maybe also the resouce embedding 
+Cross compile in Go is as simple as setting `GOOS` and `GOARCH` and running `go build`.
 
-## Task 7
+To try it out is better to see the available values in you Go installation.
+Run `go tool dist list` to see them all.
 
-Beer
+Try to build a binary for another OS or CPU architecture!
+
+
+## Task 7 - Beer
+
+It's Beer o'clock!
 
 
 
