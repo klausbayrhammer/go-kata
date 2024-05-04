@@ -26,7 +26,7 @@ Go has an official [Language Server](https://github.com/golang/tools/tree/master
 ## Task 1 - Hello World
 
 Let's compile and run a Hello World program and get familiar with the go tool.
-The code for this task is in `cmd/hello/`.
+The code for this task is in the `task-1` directory.
 
 Here is a list of things you may want to try:
 - open `main.go` in your editor and have a look around
@@ -142,17 +142,55 @@ In this task we are going to play around with a small web server, the web server
 
 ## Task 5 - Hello Goroutines
 
-**David Attenborough voice**
-Ah the fabled Goroutines... not a system thread and not a coroutine, more like a flock of concurrent subroutines multiplexed on a pool of system threads...
+**David Attenborough voice** Ah the fabled Goroutines... not system threads and nor coroutines, more like a flock of concurrent subroutines multiplexed on a pool of system threads...
 
-Go has a concurrency model not based on `async` `await` but based on CSP.
+Go has a [concurrency](https://go.dev/doc/effective_go#concurrency) model not based on `async` `await` but based on CSP.
 The [CSP model](https://www.cs.cmu.edu/~crary/819-f09/Hoare78.pdf)(Commicating Sequential Processes) was devised by Tony Hoare ~50 years ago.
 The same [Tony Hoare](https://en.wikipedia.org/wiki/Tony_Hoare) is the one that admitted to the "billion dollar mistake" by introducing `NULL` pointers.
-The irony is not wasted on me for that Go has null pointers...
+The irony of Go having null pointers is not wasted on me...
 
-Back to the Goroutines 
-To use the fa goroutines, select, and channels.
-- use pool of workers
+Back to the goroutines, to start a goroutine prepend the `go` keyword to a function invocation:
+
+```go
+func DoThings(){
+    // things are done here...
+}
+
+go DoThings() // the function runs concurrently
+```
+
+Any function can run concurrently, no coloring needed.
+But goroutines cannot return any value, luckily we can avoid the headaches of conditions and semaphores by using channels as in CSP.
+The Go proverb for this is `Do not communicate by sharing memory; instead, share memory by communicating`.
+
+```go
+func DoThings(resultChan chan string){
+    // things are done here...
+    // and the result sent via the channel
+    resultChan <- "result of a loooong computation"
+}
+
+ch := make(chan string)
+
+go DoThings(ch) // run concurrently
+
+res := <- ch // block execution waiting to receive from channel
+
+```
+
+When you have to coordinate I/O from more channels the `select` comes in to help.
+It is basically a `switch` but each case is a channel receive or send:
+
+```go
+select{
+case a := <- chanA:
+    // do stuff with a
+case chanB <- data:
+    // if chanB is ready send data
+default: 
+    // do this in case all channels are not ready
+}
+```
 
 ## Task 6 - Hello GOOS and GOARCH
 
@@ -170,6 +208,3 @@ It's Beer o'clock!
 
 
 
-### References 
-
-- [Phil Wadler: Featherweight Go](https://www.youtube.com/watch?v=Dq0WFigax_c)
