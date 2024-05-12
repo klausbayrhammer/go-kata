@@ -10,7 +10,7 @@ import (
 
 // At this point you should be able to create a web server from scratch, or by using `task-4` as a template.
 // An interesting use of goroutines could be to have a pool of worker that can run tasks received via a HTTP POST in parallel.
-// The following code can get you started to test it out you can use: curl -X POST -d '{"name":"hello","parallel":2}' 127.0.0.1:8081/task/
+// The following code can get you started to test it out you can use: `curl -X POST -d '{"name":"hello","parallel":2}' 127.0.0.1:8081/task/`
 // What about getting something more done in each task?
 
 // Task represent a task to execute in parallel, if you did not try out JSON in

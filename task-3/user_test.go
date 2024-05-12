@@ -23,7 +23,7 @@ func TestUserLogin(t *testing.T) {
 }
 
 // testLogin implements the Loginer interface  for tests.
-// Can you create other implementations?
+// 💡can you create other implementations?
 type testLogin struct {
 	hash string
 }

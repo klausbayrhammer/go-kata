@@ -15,8 +15,8 @@ type User struct {
 	// you need to add another one
 	Billing address.Address
 
-	// and a Login method would not go amiss, there should be an interface we
-	// can embed...
+	// 💡and a Login method would not go amiss, there should be an interface we
+	// can embed... or implement
 }
 
 // New returns a new User. Go has not special functions (constructors) to

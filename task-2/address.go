@@ -67,5 +67,5 @@ var cityZipcode = map[string][]string{
 	"Italy":   {"123", "456"},
 }
 
-// all these variable are hardcoded, would it be better to load the validation
+// 💡 all these variable are hardcoded, would it be better to load the validation
 // data from a file? Maybe a JSON?

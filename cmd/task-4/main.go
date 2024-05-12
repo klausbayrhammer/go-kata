@@ -7,7 +7,7 @@ import (
 )
 
 // this means all the available IP addresses on port 8080
-// if you want your server to bind only one IP you can specify it 127.0.0.1:8081
+// if you want your server to bind only one IP you can specify it as IP:PORT
 const serverAddress = ":8081"
 
 func main() {

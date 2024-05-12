@@ -44,7 +44,7 @@ func betterLogs(next func(w http.ResponseWriter, r *http.Request)) func(w http.R
 	}
 }
 
-// Can we log something more?
+// 💡Can we log something more?
 // Maybe the length of the response?
 // Or the time it took for the processing of the request?
 // Another method of the http.ResponseWriter is Write([]byte) (int, error).

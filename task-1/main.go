@@ -1,4 +1,4 @@
-// packages in Go are namespace for all the symbols defined inside the package
+// packages in Go are namespaces for all the symbols defined inside the package
 package main
 
 // importing a package

@@ -28,7 +28,7 @@ Go has an official [Language Server](https://github.com/golang/tools/tree/master
 Let's compile and run a Hello World program and get familiar with the go tool.
 The code for this task is in the `task-1` directory.
 
-Here is a list of things you may want to try:
+💡Here is a list of things you may want to try:
 - open `main.go` in your editor and have a look around
 - run `go run .`
 - run `go run main.go`
@@ -46,7 +46,7 @@ Go provides a [testing package in the standard library](https://pkg.go.dev/testi
 
 The canonical way of testing go packages is to run `go test` in a directory containing a package, or run `go test ./...` in the root directory of a module to run all the test in the module.
 
-Is there something wrong with the `address` package in the `task-2` directory? 
+💡Is there something wrong with the `address` package in the `task-2` directory? 
 Can you improve the code and write some more test?
 Can you check the test coverage?
 
@@ -135,6 +135,7 @@ b := Baz{
 
 In this task we are going to play around with a small web server, the web server is not accomplishing much yet but it will be useful to show some nice Go features.
 
+💡Things to do:
 - cd into `cmd/hello-web`
 - you should know by now how to compile and run  the code ;)
 - have a look at the `better-logs.go` file, can you improve the log middleware as the comments mentioned?
@@ -199,12 +200,12 @@ Cross compile in Go is as simple as setting `GOOS` and `GOARCH` and running `go 
 To try it out is better to see the available values in you Go installation.
 Run `go tool dist list` to see them all.
 
-Try to build a binary for another OS or CPU architecture!
+💡Try to build a binary for another OS or CPU architecture!
 
 
 ## Task 7 - Beer
 
-It's Beer o'clock!
+💡It's Beer o'clock!
 
 
 
