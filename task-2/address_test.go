@@ -28,9 +28,20 @@ func TestAddressIsValid(t *testing.T) {
 	})
 
 	t.Run("isValidZipCode", func(t *testing.T) {
-		// now that I have your attention with this failing test, can you improve
-		// this package tests?
-		t.Error("this test needs to improve")
+		// add test here
+		err := isValidZipCode(addr.City, addr.ZipCode)
+		if err != nil {
+			// in case of error we print it and fail the test
+			t.Error(err)
+		}
+	})
+	t.Run("isInvalidZipCode", func(t *testing.T) {
+		// add test here
+		err := isValidZipCode("salzburg", "123456")
+		if err == nil {
+			// in case of error we print it and fail the test
+			t.Error(err)
+		}
 	})
 
 	// 💡TODO more tests

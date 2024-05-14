@@ -5,7 +5,11 @@
 
 package address
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+	"slices"
+)
 
 // Address is user defined struct, in Go there are no classes but any user
 // defined type can have methods
@@ -57,14 +61,15 @@ var countryList = []string{
 
 // isValidZipCode return an error if the zipcode is not valid for the city
 func isValidZipCode(city, zipcode string) error {
-	// in this case a map (dictionary) can be very useful to see all the
-	// possible zipcodes in a city
-	return nil
+	var zipCodesForCity = cityZipcode[city]
+	if slices.Contains(zipCodesForCity, zipcode) {
+		return nil
+	}
+	return errors.New("zip code wrong")
 }
 
 var cityZipcode = map[string][]string{
-	"Austria": {"123", "456"},
-	"Italy":   {"123", "456"},
+	"salzburg": {"5050", "5020"},
 }
 
 // 💡 all these variable are hardcoded, would it be better to load the validation
