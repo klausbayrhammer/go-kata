@@ -33,7 +33,7 @@ Which gives Go a nice pedigree...
 
 # Improvements over C
 
-- statically linked (compiles to machine code)
+- compiled and statically linked
 - garbage collected
 - built-in concurrency 
 - batteries included
@@ -48,12 +48,14 @@ VMs and interpreters are a dependency
 
 And different lib version on different machines can cause issues
 
+---
 ##  Garbage collected
 
 Development speed 
 
 Memory safety
 
+---
 ## Built-in concurrency 
 
 How many cores do you have on your laptop?
@@ -71,11 +73,14 @@ Build and test framework
 
 Cross compiling
 
+---
 ## Basic generic types
 
 *map*, *slices*, and *channels*
 
 Since Go 1.18 with more generics
+
+---
 
 ## Simple and orthogonal
 
